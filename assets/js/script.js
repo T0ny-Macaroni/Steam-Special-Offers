@@ -44,3 +44,18 @@ $.ajax(memeGenerator).done(function (response) {
 	console.log(response);
 });
 
+const youtubeSearch = {
+	async: true,
+	crossDomain: true,
+	url: 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=justin%2Bbieber',
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '8eae8fe45emsh8cde312977721fcp1a1962jsn1c9b69406dde',
+		'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
+	}
+};
+
+$.ajax(youtubeSearch).done(function (response) {
+	console.log(response);
+});
+
