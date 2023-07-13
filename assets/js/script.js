@@ -10,11 +10,26 @@ const singleSearch = {
 	}
 };
 
-$.ajax(settings).done(function (response) {
+$.ajax(singleSearch).done(function (response) {
 	console.log(response);
 });
 
-const settingsTwo = {
+const pageSearch = {
+	async: true,
+	crossDomain: true,
+	url: 'https://games-details.p.rapidapi.com/page/1',
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
+		'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
+	}
+};
+
+$.ajax(pageSearch).done(function (response) {
+	console.log(response);
+});
+
+const memeGenerator = {
 	async: true,
 	crossDomain: true,
 	url: 'https://meme-generator11.p.rapidapi.com/meme',
@@ -25,6 +40,7 @@ const settingsTwo = {
 	}
 };
 
-$.ajax(settingsTwo).done(function (response) {
+$.ajax(memeGenerator).done(function (response) {
 	console.log(response);
 });
+
