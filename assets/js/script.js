@@ -1,8 +1,8 @@
 //Links to steam game details API
-const settings = {
+const singleSearch = {
 	async: true,
 	crossDomain: true,
-	url: 'https://games-details.p.rapidapi.com/search/cs',
+	url: 'https://games-details.p.rapidapi.com/search/elden',
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
