@@ -10,20 +10,22 @@
 </head>
 
 <body>
-    <header class="container pb-5">
-        <h1 class="notification has-text-centered is-size-1">Steam Special Catalog</h1>
+    <header>
+        <div class="container is-fluid has-text-centered p-5" id="heading">
+            <h1>Steam Specials Catalog</h1>
+        </div>
     </header>
     <section>
         <div class="columns">
-            <div class="column has-text-centered">
+            <div class="column has-text-centered mt-4 p-5">
                 <input class="input" type="text" placeholder="Search Games" id="searchInput">
-                <button class="button bd-notification is-info" id="searchBtn">Search</button>
+                <button class="button is-fullwidth is-info" id="searchBtn">Search</button>
                 <p id="lnk"></p>
             </div>
             <!-- second column -->
-            <div class="column has-text-centered">
-                <button class="button">Meme Generator</button>
+            <div class="column has-text-centered mt-4 p-5">
                 <div class="card column">
+                    <button class="button is-info">Meme Generator</button>
                     <div class="card-content">
                         <div class="content">
                             <span><img></span>
@@ -37,7 +39,7 @@
     </section>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="assets/js/script.js"></script>
+    <!-- <script src="assets/js/script.js"></script> -->
 </body>
 
 </html>
