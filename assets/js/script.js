@@ -1,10 +1,14 @@
 // This should capture the user input on the search bar 
+$('#searchBtn').on('click', appendSearch());
+
 function appendSearch() {
+
 	var userInput = document.getElementById(input).value;
 	var lnk = document.getElementById(lnk)
 	lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
 console.log(userInput);
 }
+
 
 
 
@@ -35,9 +39,9 @@ $.ajax(singleSearch).done(function (response) {
 // 	}
 // };
 
-$.ajax(pageSearch).done(function (response) {
-	console.log(response);
-});
+// $.ajax(pageSearch).done(function (response) {
+// 	console.log(response);
+// });
 // Controls the meme generator
 const memeGenerator = {
 	async: true,
