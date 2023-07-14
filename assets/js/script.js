@@ -1,16 +1,5 @@
 // This should capture the user input on the search bar 
-
-function appendSearch() {
-	
-	var userInput = document.getElementById(searchInput).value;
-	var lnk = document.getElementById(lnk);
-	lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
-	console.log(userInput);
-}
-
-$('#searchBtn').on('click', appendSearch());
-
-
+var userInput = $('#searchInput').val();
 
 //Links to steam game details API
 const singleSearch = {
@@ -34,12 +23,12 @@ $.ajax(singleSearch).done(function (response) {
 // 	url: 'https://games-details.p.rapidapi.com/page/1',
 // 	method: 'GET',
 // 	headers: {
-// 		'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
-// 		'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
-// 	}
-// };
-
-// $.ajax(pageSearch).done(function (response) {
+	// 		'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
+	// 		'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
+	// 	}
+	// };
+	
+	// $.ajax(pageSearch).done(function (response) {
 // 	console.log(response);
 // });
 // Controls the meme generator
@@ -73,3 +62,8 @@ $.ajax(youtubeSearch).done(function (response) {
 	console.log(response);
 });
 
+$('#searchBtn').on('click', function() {
+	var lnk = $('#lnk');
+	lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
+	console.log(userInput);
+});
