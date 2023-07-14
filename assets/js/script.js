@@ -1,14 +1,14 @@
 // This should capture the user input on the search bar 
-$('#searchBtn').on('click', appendSearch());
 
 function appendSearch() {
-
-	var userInput = document.getElementById(input).value;
-	var lnk = document.getElementById(lnk)
+	
+	var userInput = document.getElementById(searchInput).value;
+	var lnk = document.getElementById(lnk);
 	lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
-console.log(userInput);
+	console.log(userInput);
 }
 
+$('#searchBtn').on('click', appendSearch());
 
 
 
@@ -16,7 +16,7 @@ console.log(userInput);
 const singleSearch = {
 	async: true,
 	crossDomain: true,
-	url: 'https://games-details.p.rapidapi.com/search/ + userInput +',
+	url: 'https://games-details.p.rapidapi.com/search/' + userInput,
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
@@ -64,7 +64,7 @@ const youtubeSearch = {
 	url: 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=justin%2Bbieber',
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '8eae8fe45emsh8cde312977721fcp1a1962jsn1c9b69406dde',
+		'X-RapidAPI-Key': '13c0ab065bmsh9eeb9e8413c0474p1a1ef8jsnb069211559f5',
 		'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
 	}
 };
