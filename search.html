@@ -19,7 +19,21 @@
         <div class="columns">
             <div class="column has-text-centered mt-4 p-5">
                 <input class="input" type="text" placeholder="Search Games" id="searchInput">
-                <button class="button is-fullwidth is-info" id="searchBtn">Search</button>
+                <button class="button is-fullwidth is-info js-modal-trigger" id="searchBtn" data-target="modal-js-example">Search</button>
+                <div id="modal-js-example" class="modal">
+                    <div class="modal-background"></div>
+                    <div class="modal-content">
+                        <div class="box">
+                            <button class="button is-fullwidth is-info" id="game1"></button>
+                            <button class="button is-fullwidth is-info" id="game2"></button>
+                            <button class="button is-fullwidth is-info" id="game3"></button>
+                        </div>
+                    </div>
+                    <button class="modal-close is-large" aria-label="close"></button>
+                </div>
+                <!-- <button class="js-modal-trigger" data-target="modal-js-example">
+                    Open JS example modal
+                </button> -->
                 <p id="lnk"></p>
             </div>
             <!-- second column -->
@@ -33,10 +47,12 @@
                     </div>
                 </div>
             </div>
+            <!-- will be used for a modal to appear with the first 3 games when searched -->
 
         </div>
         </div>
     </section>
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="assets/js/script.js"></script>
