@@ -12,11 +12,25 @@
   <title>Steam Specials Catalog</title>
 </head>
 <body>
-  <header>
-    <div class="container is-fluid has-text-centered p-5" id="heading">
-      <h1>Steam Specials Catalog</h1>
-    </div>
-  </header>
+  <!-- Div container to wrap all the elements in body -->
+  <div id="darkMode">
+    <header>
+      <div class="container is-fluid p-5" id="heading">
+        <div class="columns">
+          <div class="column toggle has-text-left is-four-fifths mt-3 ml-2">
+            <h1>Steam Specials Catalog</h1>
+          </div>
+          <div class="column has-text-right is-one-fifth mr-2">
+            <p>Dark theme</p>
+            <label class="switch">
+              <input type="checkbox" id="theme-switcher">
+              <span class="slider round"></span>
+            </label>
+            <p>Light theme</p>
+          </div>
+        </div>
+      </div>
+    </header>
 
   <!-- div with class columns to wrap all columns -->
   <section>
@@ -76,7 +90,7 @@
       </div>
     </div>
   </section>
-
+  </div>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="assets/js/script.js"></script>
 </body>
