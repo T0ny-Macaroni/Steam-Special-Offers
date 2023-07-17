@@ -6,6 +6,8 @@
 
 // Declared userInput globally to make it accessible in the function
 var userInput;
+var gameDetails;
+var data;
 
 $('#searchBtn').on('click', function () {
 	// Capture the user input when the search button is clicked
@@ -37,40 +39,63 @@ function performSearch(userInput) {
 
 	$.ajax(singleSearch).done(function (response) {
 		console.log(response);
+		var gameId = response[0].id;
+		console.log(gameId);
+		performIdSearch(gameId);
+	});
+};
+
+//Performs a single game search based on a game's ID (we previously got data from a game search + user Input)
+function performIdSearch(gameId) {
+	const idSearch = {
+		async: true,
+		crossDomain: true,
+		//url: 'https://games-details.p.rapidapi.com/single_game/' + gameId,
+		method: 'GET',
+		headers: {
+			'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
+			'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
+		}
+	};
+
+	$.ajax(idSearch).done(function (response) {
+		console.log(response);
+		// create a for loop
+		$('#game1').text(response[0].name);
 	});
 };
 ///////////////////////////////////////////////////////////////////////
 // !!! I commented it out for now!!!
-// //Links to steam game details API
-// const singleSearch = {
-// 	async: true,
-// 	crossDomain: true,
-// 	//url: 'https://games-details.p.rapidapi.com/search/' + userInput,
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
-// 		'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
-// 	}
-// };
+//Links to steam game details API
+const singleSearch = {
+	async: true,
+	crossDomain: true,
+	url: 'https://games-details.p.rapidapi.com/search/' + userInput,
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
+		'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
+	}
+};
 
-// $.ajax(singleSearch).done(function (response) {
-// 	console.log(response);
-// });
+$.ajax(singleSearch).done(function (response) {
+	console.log(response);
+});
 ///////////////////////////////////////////////////////////////////////
-// const pageSearch = {
-// 	async: true,
-// 	crossDomain: true,
-// 	url: 'https://games-details.p.rapidapi.com/page/1',
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
-// 		'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
-// 	}
-// };
+const pageSearch = {
+	async: true,
+	crossDomain: true,
+	url: 'https://games-details.p.rapidapi.com/page/1',
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
+		'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
+	}
+};
 
-// $.ajax(pageSearch).done(function (response) {
-// 	console.log(response);
-// });
+$.ajax(pageSearch).done(function (response) {
+	console.log(response);
+});
 ///////////////////////////////////////////////////////////////////////
 // Meme generator is DONE and working!
 //I put variables here for now
