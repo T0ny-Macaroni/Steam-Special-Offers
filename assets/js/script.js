@@ -1,9 +1,3 @@
-// This should capture the user input on the search bar 
-// var userInput = $('#searchInput').val();
-///////////////////////////////////////////////////////////////////////
-//API keys are commented out to not waste calls
-///////////////////////////////////////////////////////////////////////
-
 // Declared userInput globally to make it accessible in the function
 var userInput;
 var gameDetails;
@@ -64,39 +58,7 @@ function performIdSearch(gameId) {
 		$('#game1').text(response[0].name);
 	});
 };
-///////////////////////////////////////////////////////////////////////
-// !!! I commented it out for now!!!
-//Links to steam game details API
-const singleSearch = {
-	async: true,
-	crossDomain: true,
-	url: 'https://games-details.p.rapidapi.com/search/' + userInput,
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
-		'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
-	}
-};
 
-$.ajax(singleSearch).done(function (response) {
-	console.log(response);
-});
-///////////////////////////////////////////////////////////////////////
-const pageSearch = {
-	async: true,
-	crossDomain: true,
-	url: 'https://games-details.p.rapidapi.com/page/1',
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
-		'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
-	}
-};
-
-$.ajax(pageSearch).done(function (response) {
-	console.log(response);
-});
-///////////////////////////////////////////////////////////////////////
 // Meme generator is DONE and working!
 //I put variables here for now
 var memeBtn = $('#memeBtn');
@@ -144,18 +106,41 @@ const youtubeSearch = {
 $.ajax(youtubeSearch).done(function (response) {
 	console.log(response);
 });
-///////////////////////////////////////////////////////////////////////
-//Commented it out for now, changed the button function a bit and moved it up
-// $('#searchBtn').on('click', function() {
-// 	var lnk = $('#lnk');
-// 	lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
-// 	console.log(userInput);
-// });
 
-//conversion function for rupees into USD
-// var conversionRate = 0.012;
-// for (let i = 0; i < indianRupees.length; i++) {
-// 	const rupees = indianRupees[i];
-// 	const usd = rupees * conversionRate;
-// 	console.log(`${rupees} INR = ${usd} USD`);
-// }
+
+document.addEventListener('DOMContentLoaded', () => {
+	// Functions to open and close a modal
+	function openModal($el) {
+		$el.classList.add('is-active');
+	}
+
+	function closeModal($el) {
+		$el.classList.remove('is-active');
+	}
+
+	function closeAllModals() {
+		(document.querySelectorAll('.modal') || []).forEach(($modal) => {
+			closeModal($modal);
+		});
+	}
+
+	// Add a click event on buttons to open a specific modal
+	(document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+		const modal = $trigger.dataset.target;
+		const $target = document.getElementById(modal);
+
+
+		$trigger.addEventListener('click', () => {
+			openModal($target);
+		});
+	});
+
+	// Add a click event on various child elements to close the parent modal
+	(document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+		const $target = $close.closest('.modal');
+
+		$close.addEventListener('click', () => {
+			closeModal($target);
+		});
+	});
+});
