@@ -1,9 +1,3 @@
-// This should capture the user input on the search bar 
-// var userInput = $('#searchInput').val();
-///////////////////////////////////////////////////////////////////////
-//API keys are commented out to not waste calls
-///////////////////////////////////////////////////////////////////////
-
 // Declared userInput globally to make it accessible in the function
 var userInput;
 
@@ -23,11 +17,12 @@ $('#searchBtn').on('click', function() {
   }
 });
 
+//Performs a search based on a user's input
 function performSearch(userInput) {
   const singleSearch = {
     async: true,
     crossDomain: true,
-    url: 'https://games-details.p.rapidapi.com/search/' + userInput,
+    //url: 'https://games-details.p.rapidapi.com/search/' + userInput,
     method: 'GET',
     headers: {
       'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
@@ -36,6 +31,27 @@ function performSearch(userInput) {
   };
 
   $.ajax(singleSearch).done(function (response) {
+    console.log(response);
+    var gameId = response[0].id;
+    console.log(gameId);
+    performIdSearch(gameId);
+  });
+};
+
+//Performs a single game search based on a game's ID (we previously got data from a game search + user Input)
+function performIdSearch(gameId) {
+  const idSearch = {
+    async: true,
+    crossDomain: true,
+    //url: 'https://games-details.p.rapidapi.com/single_game/' + gameId,
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
+      'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
+    }
+  };
+  
+  $.ajax(idSearch).done(function (response) {
     console.log(response);
   });
 };
