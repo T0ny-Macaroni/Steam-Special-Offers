@@ -9,7 +9,7 @@ $('#searchBtn').on('click', function () {
 
 	if (userInput) {
 		var lnk = $('#lnk');
-		lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
+		//lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
 		console.log(userInput);
 
 		//Calling API function
@@ -23,7 +23,7 @@ function performSearch(userInput) {
 	const singleSearch = {
 		async: true,
 		crossDomain: true,
-		url: 'https://games-details.p.rapidapi.com/search/' + userInput,
+		//url: 'https://games-details.p.rapidapi.com/search/' + userInput,
 		method: 'GET',
 		headers: {
 			'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
@@ -53,7 +53,7 @@ function performIdSearch(gameId) {
 	const idSearch = {
 		async: true,
 		crossDomain: true,
-		url: 'https://games-details.p.rapidapi.com/single_game/' + gameId,
+		//url: 'https://games-details.p.rapidapi.com/single_game/' + gameId,
 		method: 'GET',
 		headers: {
 			'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
@@ -150,4 +150,23 @@ document.addEventListener('DOMContentLoaded', () => {
 			closeModal($target);
 		});
 	});
+});
+
+
+// Dark/ligh theme toggle switch
+// Access toggle switch HTML element
+var themeSwitcher = document.querySelector("#theme-switcher");
+var dark = document.getElementById("darkMode");
+
+var mode = "dark";
+
+themeSwitcher.addEventListener("click", function() {
+  if (mode === "dark") {
+    mode = "light";
+    dark.setAttribute("id", "lightMode");
+  }
+  else {
+    mode = "dark";
+    dark.setAttribute("id", "darkMode");
+  }
 });
