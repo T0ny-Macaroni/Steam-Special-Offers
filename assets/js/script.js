@@ -1,59 +1,43 @@
+// This should capture the user input on the search bar 
+// var userInput = $('#searchInput').val();
+///////////////////////////////////////////////////////////////////////
+//API keys are commented out to not waste calls
+///////////////////////////////////////////////////////////////////////
+
 // Declared userInput globally to make it accessible in the function
 var userInput;
 
-$('#searchBtn').on('click', function() {
-  // Capture the user input when the search button is clicked
-  userInput = $('#searchInput').val();
+$('#searchBtn').on('click', function () {
+	// Capture the user input when the search button is clicked
+	userInput = $('#searchInput').val();
 
-  if (userInput) {
-    var lnk = $('#lnk');
-    lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
-    console.log(userInput);
-    
-    //Calling API function
-    performSearch(userInput);
-  } else {
-    console.log('Invalid input');
-  }
+	if (userInput) {
+		var lnk = $('#lnk');
+		lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
+		console.log(userInput);
+
+		//Calling API function
+		performSearch(userInput);
+	} else {
+		console.log('Invalid input');
+	}
 });
 
-//Performs a search based on a user's input
 function performSearch(userInput) {
-  const singleSearch = {
-    async: true,
-    crossDomain: true,
-    //url: 'https://games-details.p.rapidapi.com/search/' + userInput,
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
-      'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
-    }
-  };
+	const singleSearch = {
+		async: true,
+		crossDomain: true,
+		url: 'https://games-details.p.rapidapi.com/search/' + userInput,
+		method: 'GET',
+		headers: {
+			'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
+			'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
+		}
+	};
 
-  $.ajax(singleSearch).done(function (response) {
-    console.log(response);
-    var gameId = response[0].id;
-    console.log(gameId);
-    performIdSearch(gameId);
-  });
-};
-
-//Performs a single game search based on a game's ID (we previously got data from a game search + user Input)
-function performIdSearch(gameId) {
-  const idSearch = {
-    async: true,
-    crossDomain: true,
-    //url: 'https://games-details.p.rapidapi.com/single_game/' + gameId,
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
-      'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
-    }
-  };
-  
-  $.ajax(idSearch).done(function (response) {
-    console.log(response);
-  });
+	$.ajax(singleSearch).done(function (response) {
+		console.log(response);
+	});
 };
 ///////////////////////////////////////////////////////////////////////
 // !!! I commented it out for now!!!
@@ -79,12 +63,12 @@ function performIdSearch(gameId) {
 // 	url: 'https://games-details.p.rapidapi.com/page/1',
 // 	method: 'GET',
 // 	headers: {
-	// 		'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
-	// 		'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
-	// 	}
-	// };
-	
-	// $.ajax(pageSearch).done(function (response) {
+// 		'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
+// 		'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
+// 	}
+// };
+
+// $.ajax(pageSearch).done(function (response) {
 // 	console.log(response);
 // });
 ///////////////////////////////////////////////////////////////////////
@@ -94,28 +78,28 @@ var memeBtn = $('#memeBtn');
 var memeImg = $('#memeImg');
 
 const memeGenerator = {
-  async: true,
-  crossDomain: true,
-  //url: 'https://meme-generator11.p.rapidapi.com/meme',
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': '8eae8fe45emsh8cde312977721fcp1a1962jsn1c9b69406dde',
-    'X-RapidAPI-Host': 'meme-generator11.p.rapidapi.com'
-  }
+	async: true,
+	crossDomain: true,
+	//url: 'https://meme-generator11.p.rapidapi.com/meme',
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '8eae8fe45emsh8cde312977721fcp1a1962jsn1c9b69406dde',
+		'X-RapidAPI-Host': 'meme-generator11.p.rapidapi.com'
+	}
 };
 
 function generateMeme() {
-  $.ajax(memeGenerator).done(function (response) {
-    console.log(response);
-    displayMeme(response.url);
-  });
+	$.ajax(memeGenerator).done(function (response) {
+		console.log(response);
+		displayMeme(response.url);
+	});
 }
 
 function displayMeme(url) {
-  const memeContainer = $('#memeContainer');
-  memeContainer.empty();
-  const memeImg = $('<img>').attr('src', url);
-  memeContainer.append(memeImg);
+	const memeContainer = $('#memeContainer');
+	memeContainer.empty();
+	const memeImg = $('<img>').attr('src', url);
+	memeContainer.append(memeImg);
 }
 $('#memeBtn').on('click', generateMeme);
 ///////////////////////////////////////////////////////////////////////
@@ -142,3 +126,11 @@ $.ajax(youtubeSearch).done(function (response) {
 // 	lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
 // 	console.log(userInput);
 // });
+
+//conversion function for rupees into USD
+// var conversionRate = 0.012;
+// for (let i = 0; i < indianRupees.length; i++) {
+// 	const rupees = indianRupees[i];
+// 	const usd = rupees * conversionRate;
+// 	console.log(`${rupees} INR = ${usd} USD`);
+// }
