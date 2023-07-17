@@ -1,3 +1,9 @@
+// This should capture the user input on the search bar 
+// var userInput = $('#searchInput').val();
+///////////////////////////////////////////////////////////////////////
+//API keys are commented out to not waste calls
+///////////////////////////////////////////////////////////////////////
+
 // Declared userInput globally to make it accessible in the function
 var userInput;
 var gameDetails;
@@ -19,41 +25,40 @@ $('#searchBtn').on('click', function () {
 	}
 });
 
-//Performs a search based on a user's input
 function performSearch(userInput) {
-  const singleSearch = {
-    async: true,
-    crossDomain: true,
-    url: 'https://games-details.p.rapidapi.com/search/' + userInput,
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
-      'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
-    }
-  };
+	const singleSearch = {
+		async: true,
+		crossDomain: true,
+		url: 'https://games-details.p.rapidapi.com/search/' + userInput,
+		method: 'GET',
+		headers: {
+			'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
+			'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
+		}
+	};
 
 	$.ajax(singleSearch).done(function (response) {
-    console.log(response);
-    var gameId = response[0].id;
-    console.log(gameId);
-    performIdSearch(gameId);
-  });
+		console.log(response);
+		var gameId = response[0].id;
+		console.log(gameId);
+		performIdSearch(gameId);
+	});
 };
 
 //Performs a single game search based on a game's ID (we previously got data from a game search + user Input)
 function performIdSearch(gameId) {
-  const idSearch = {
-    async: true,
-    crossDomain: true,
-    //url: 'https://games-details.p.rapidapi.com/single_game/' + gameId,
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
-      'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
-    }
-  };
-  
-  $.ajax(idSearch).done(function (response) {
+	const idSearch = {
+		async: true,
+		crossDomain: true,
+		//url: 'https://games-details.p.rapidapi.com/single_game/' + gameId,
+		method: 'GET',
+		headers: {
+			'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
+			'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
+		}
+	};
+
+	$.ajax(idSearch).done(function (response) {
 		console.log(response);
 		// create a for loop
 		$('#game1').text(response[0].name);
@@ -147,39 +152,10 @@ $.ajax(youtubeSearch).done(function (response) {
 // 	console.log(userInput);
 // });
 
-document.addEventListener('DOMContentLoaded', () => {
-	// Functions to open and close a modal
-	function openModal($el) {
-		$el.classList.add('is-active');
-	}
-
-	function closeModal($el) {
-		$el.classList.remove('is-active');
-	}
-
-	function closeAllModals() {
-		(document.querySelectorAll('.modal') || []).forEach(($modal) => {
-			closeModal($modal);
-		});
-	}
-
-	// Add a click event on buttons to open a specific modal
-	(document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
-		const modal = $trigger.dataset.target;
-		const $target = document.getElementById(modal);
-		
-
-		$trigger.addEventListener('click', () => {
-			openModal($target);
-		});
-	});
-
-	// Add a click event on various child elements to close the parent modal
-	(document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
-		const $target = $close.closest('.modal');
-
-		$close.addEventListener('click', () => {
-			closeModal($target);
-		});
-	});
-});
+//conversion function for rupees into USD
+// var conversionRate = 0.012;
+// for (let i = 0; i < indianRupees.length; i++) {
+// 	const rupees = indianRupees[i];
+// 	const usd = rupees * conversionRate;
+// 	console.log(`${rupees} INR = ${usd} USD`);
+// }
