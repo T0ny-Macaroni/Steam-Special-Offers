@@ -1,22 +1,62 @@
 // This should capture the user input on the search bar 
-var userInput = $('#searchInput').val();
+// var userInput = $('#searchInput').val();
+///////////////////////////////////////////////////////////////////////
+//API keys are commented out to not waste calls
+///////////////////////////////////////////////////////////////////////
 
-//Links to steam game details API
-const singleSearch = {
-	async: true,
-	crossDomain: true,
-	//url: 'https://games-details.p.rapidapi.com/search/' + userInput,
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
-		'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
-	}
-};
+// Declared userInput globally to make it accessible in the function
+var userInput;
 
-$.ajax(singleSearch).done(function (response) {
-	console.log(response);
+$('#searchBtn').on('click', function() {
+  // Capture the user input when the search button is clicked
+  userInput = $('#searchInput').val();
+
+  if (userInput) {
+    var lnk = $('#lnk');
+    lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
+    console.log(userInput);
+    
+    //Calling API function
+    performSearch(userInput);
+  } else {
+    console.log('Invalid input');
+  }
 });
 
+function performSearch(userInput) {
+  const singleSearch = {
+    async: true,
+    crossDomain: true,
+    url: 'https://games-details.p.rapidapi.com/search/' + userInput,
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
+      'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
+    }
+  };
+
+  $.ajax(singleSearch).done(function (response) {
+    console.log(response);
+  });
+};
+///////////////////////////////////////////////////////////////////////
+// !!! I commented it out for now!!!
+// //Links to steam game details API
+// const singleSearch = {
+// 	async: true,
+// 	crossDomain: true,
+// 	//url: 'https://games-details.p.rapidapi.com/search/' + userInput,
+// 	method: 'GET',
+// 	headers: {
+// 		'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
+// 		'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
+// 	}
+// };
+
+// $.ajax(singleSearch).done(function (response) {
+// 	console.log(response);
+// });
+///////////////////////////////////////////////////////////////////////
 // const pageSearch = {
 // 	async: true,
 // 	crossDomain: true,
@@ -31,7 +71,7 @@ $.ajax(singleSearch).done(function (response) {
 	// $.ajax(pageSearch).done(function (response) {
 // 	console.log(response);
 // });
-
+///////////////////////////////////////////////////////////////////////
 // Meme generator is DONE and working!
 //I put variables here for now
 var memeBtn = $('#memeBtn');
@@ -62,8 +102,7 @@ function displayMeme(url) {
   memeContainer.append(memeImg);
 }
 $('#memeBtn').on('click', generateMeme);
-
-
+///////////////////////////////////////////////////////////////////////
 
 // Displays youtube videos on the search page
 const youtubeSearch = {
@@ -80,9 +119,10 @@ const youtubeSearch = {
 $.ajax(youtubeSearch).done(function (response) {
 	console.log(response);
 });
-
-$('#searchBtn').on('click', function() {
-	var lnk = $('#lnk');
-	lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
-	console.log(userInput);
-});
+///////////////////////////////////////////////////////////////////////
+//Commented it out for now, changed the button function a bit and moved it up
+// $('#searchBtn').on('click', function() {
+// 	var lnk = $('#lnk');
+// 	lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
+// 	console.log(userInput);
+// });
