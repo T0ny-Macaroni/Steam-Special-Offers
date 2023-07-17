@@ -36,6 +36,15 @@ function performSearch(userInput) {
 		var gameId = response[0].id;
 		console.log(gameId);
 		performIdSearch(gameId);
+    // $('#game1').text(response[0].name);
+    // $('#game2').text(response[1].name);
+    // $('#game3').text(response[2].name);
+    for (let i = 0; i < response.length; i++) {
+      const gameName = response[i].name;
+      $('#game1').text(gameName);
+      $('#game2').text(gameName);
+      $('#game3').text(gameName);
+  }
 	});
 };
 
@@ -44,7 +53,7 @@ function performIdSearch(gameId) {
 	const idSearch = {
 		async: true,
 		crossDomain: true,
-		//url: 'https://games-details.p.rapidapi.com/single_game/' + gameId,
+		url: 'https://games-details.p.rapidapi.com/single_game/' + gameId,
 		method: 'GET',
 		headers: {
 			'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
@@ -54,8 +63,6 @@ function performIdSearch(gameId) {
 
 	$.ajax(idSearch).done(function (response) {
 		console.log(response);
-		// create a for loop
-		$('#game1').text(response[0].name);
 	});
 };
 
@@ -89,8 +96,8 @@ function displayMeme(url) {
 	memeContainer.append(memeImg);
 }
 $('#memeBtn').on('click', generateMeme);
-///////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////
 // Displays youtube videos on the search page
 const youtubeSearch = {
 	async: true,
