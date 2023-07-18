@@ -1,5 +1,5 @@
 // Declared userInput globally to make it accessible in the function
-var userInput;
+var userInput = $('#searchInput').val();
 var gameDetails;
 var data;
 var gameId;
@@ -19,6 +19,9 @@ $('#searchBtn').on('click', function () {
 	} else {
 		console.log('Invalid input');
 	}
+	// var html = $('a')
+	// // html.attr('href', details.html);
+	// console.log(details.html);
 });
 
 function performSearch(userInput) {
@@ -35,31 +38,60 @@ function performSearch(userInput) {
 
 	$.ajax(singleSearch).done(function (response) {
 		console.log(response);
-		performIdSearch(gameId);
-		$('#game1ID').append(response[0].id);
+		// performIdSearch(gameId);
+		var idVal = $('#game1').data('myval'); //getter
+		console.log(idVal);
+		// $('#game1').data('myval', response[0].id); //setter
+		$('#game1').data('myval', response[0].id).attr('data-myval', response[0].id);
+		$('#game2').data('myval', response[1].id).attr('data-myval', response[1].id);
+		$('#game3').data('myval', response[2].id).attr('data-myval', response[2].id);
+
+		// $('#game1').append(response[0].id);
 		console.log(response[0].id);
 		console.log(response[1].id);
-		$('#game2ID').append(response[1].id);
-		$('#game3ID').append(response[2].id);
+		// $('#game2').append(response[1].id);
+		// $('#game3').append(response[2].id);
 		$('#game1').text(response[0].name);
 		$('#game2').text(response[1].name);
 		$('#game3').text(response[2].name);
-		// for (let i = 0; i < response.length; i++) {
-		// 	const gameName = response[i].name;
-		// 	console.log(gameName);
-		// 	$('#game1').text(gameName);
-		// 	$('#game2').text(gameName);
-		// 	$('#game3').text(gameName);
-		// }
+		// var html = $('a')
+		// html.attr('href', details.html);
 	});
 };
 
+$('#game1').on ('click', function() {
+	// performIdSearch();
+	var gameID = $('#game1').data('myval'); //getter
+	console.log(gameID);
+	performIdSearch(gameID);
+	// console.log('Game Details', performIdSearch(gameID));
+});
+
+$('#game2').on ('click', function() {
+	// window.location.href = "details.html";
+	// performIdSearch(response[1].id);
+	// console.log('Game Details', performIdSearch);
+	var gameID = $('#game2').data('myval'); //getter
+	console.log(gameID);
+	performIdSearch(gameID);
+});
+
+$('#game3').on ('click', function() {
+	// window.location.href = "details.html";
+	// performIdSearch(response[2].id);
+	// console.log('Game Details', performIdSearch);
+	var gameID = $('#game3').data('myval'); //getter
+	console.log(gameID);
+	performIdSearch(gameID);
+});
+
 //Performs a single game search based on a game's ID (we previously got data from a game search + user Input)
 function performIdSearch(gameId) {
+	// console.log(gameId);
 	const idSearch = {
 		async: true,
 		crossDomain: true,
-		//url: 'https://games-details.p.rapidapi.com/single_game/' + gameId,
+		url: 'https://games-details.p.rapidapi.com/single_game/' + gameId,
 		method: 'GET',
 		headers: {
 			'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
@@ -129,7 +161,11 @@ $.ajax(youtubeSearch).done(function (response) {
 document.addEventListener('DOMContentLoaded', () => {
 	// Functions to open and close a modal
 	function openModal($el) {
+		if (!userInput) {
+			$('input:text').attr('placeholder', 'Input a Game');
+		} else {
 		$el.classList.add('is-active');
+	};
 	}
 
 	function closeModal($el) {
@@ -149,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 		$trigger.addEventListener('click', () => {
-			openModal($target);
+				openModal($target);
 		});
 	});
 
