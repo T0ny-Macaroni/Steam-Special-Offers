@@ -74,7 +74,7 @@ var memeImg = $('#memeImg');
 const memeGenerator = {
 	async: true,
 	crossDomain: true,
-	//url: 'https://meme-generator11.p.rapidapi.com/meme',
+	// url: 'https://meme-generator11.p.rapidapi.com/meme',
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Key': '8eae8fe45emsh8cde312977721fcp1a1962jsn1c9b69406dde',
@@ -93,6 +93,11 @@ function displayMeme(url) {
 	const memeContainer = $('#memeContainer');
 	memeContainer.empty();
 	const memeImg = $('<img>').attr('src', url);
+  memeImg.on('error', function () {
+    memeImg.attr('src', 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjBmNGpiNGgyMnhlcmowa3BpaWFtaTk4ajN5YW1vdDlhcmx1dnRzYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/14uQ3cOFteDaU/giphy.gif')
+    var messageP = $('<p>Sorry, this image is not avaiable:(</p>');
+    memeContainer.append(messageP);
+  })
 	memeContainer.append(memeImg);
 }
 $('#memeBtn').on('click', generateMeme);
