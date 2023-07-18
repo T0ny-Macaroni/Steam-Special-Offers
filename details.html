@@ -42,23 +42,23 @@
         <div class="columns">
           <div class="column">
             <img src="" alt="">
-            <p>Name of the game</p>
+            <p class="gameTitle">Name of the game</p>
           </div>
         </div>
         <!-- Game descriptions and release date -->
         <div class="columns">
           <div class="column">
-            <p>Game description</p>
-            <p>Publisher and release date</p>
+            <p class="description"></p>
+            <p class="publish"></p>
           </div>
         </div>
         <!-- System requirements -->
         <div class="columns">
           <div class="column">
-            <p class="bd-notification is-info">System requirements (Windows)</p>
+            <p id='windowsRec' class="bd-notification is-info">System requirements (Windows)</p>
           </div>
           <div class="column">
-            <p class="bd-notification is-info">System requirements (Linux)</p>
+            <p id="windowsMin" class="bd-notification is-info"></p>
           </div>
         </div>
           <div class="column"><a href="search.html"><button class="button is-fullwidth is-info js-modal-trigger" id="backBtn" data-target="modal-js-example">To Main Page</button></a></div>
@@ -84,10 +84,10 @@
         <!-- Reviews -->
         <div class="columns">
           <div class="column is-half">
-            <p class="bd-notification is-danger">Top rated review</p>
+            <p id="topReview" class="bd-notification is-danger">Top rated review</p>
           </div>
           <div class="column is-half">
-            <p class="bd-notification is-danger">Most rated review</p>
+            <p id="recentReview" class="bd-notification is-danger">Most rated review</p>
           </div>
         </div>
         </div>

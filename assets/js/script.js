@@ -3,6 +3,9 @@ var userInput = $('#searchInput').val();
 var gameDetails;
 var data;
 var gameId;
+var idDetails;
+var savedId;
+var reviews;
 
 $('#searchBtn').on('click', function () {
 	// Capture the user input when the search button is clicked
@@ -70,8 +73,8 @@ function performIdSearch(gameId) {
 
 	$.ajax(idSearch).done(function (response) {
 		console.log(response);
-		let string = JSON.stringify(response);
-		localStorage.setItem('Game ID', string);
+		let idDetails = JSON.stringify(response);
+		localStorage.setItem('Game Details', idDetails);
 	});
 };
 
@@ -79,15 +82,15 @@ $('#game1').on ('click', function() {
 	var gameIdVal = $('#game1').data('myval'); //getter
 	console.log(gameIdVal);
 	performIdSearch(gameIdVal);
-	let string = JSON.stringify(gameIdVal);
-	localStorage.setItem('Game ID', string);
+	let idDetails = JSON.stringify(gameIdVal);
+	localStorage.setItem('Game ID', idDetails);
 	$('a').attr('href', 'details.html').click(function(e){
 		e.preventDefault();
 		if (this.href) {
 			var target = this.href;
 			setTimeout(function(){
 				window.location = target;
-			}, 1000);
+			}, 1500);
 		}
 	});
 });
@@ -96,15 +99,15 @@ $('#game2').on ('click', function() {
 	var gameIdVal = $('#game2').data('myval'); //getter
 	console.log(gameIdVal);
 	performIdSearch(gameIdVal);
-	let string = JSON.stringify(gameIdVal);
-	localStorage.setItem('Game ID', string);
+	let idDetails = JSON.stringify(gameIdVal);
+	localStorage.setItem('Game ID', idDetails);
 	$('a').attr('href', 'details.html').click(function(e){
 		e.preventDefault();
 		if (this.href) {
 			var target = this.href;
 			setTimeout(function(){
 				window.location = target;
-			}, 1000);
+			}, 1500);
 		}
 	});
 });
@@ -113,15 +116,15 @@ $('#game3').on ('click', function() {
 	var gameIdVal = $('#game3').data('myval'); //getter
 	console.log(gameIdVal);
 	performIdSearch(gameIdVal);
-	let string = JSON.stringify(gameIdVal);
-	localStorage.setItem('Game ID', string);
+	let idDetails = JSON.stringify(gameIdVal);
+	localStorage.setItem('Game ID', idDetails);
 	$('a').attr('href', 'details.html').click(function(e){
 		e.preventDefault();
 		if (this.href) {
 			var target = this.href;
 			setTimeout(function(){
 				window.location = target;
-			}, 1000);
+			}, 1500);
 		}
 	});
 });
@@ -249,3 +252,40 @@ themeSwitcher.addEventListener("click", function () {
 		dark.setAttribute("id", "darkMode");
 	}
 });
+
+
+
+function populateDetails(){
+	var savedDetails = JSON.parse(localStorage.getItem('Game Details'));
+	var savedId = JSON.parse(localStorage.getItem('Game ID'));
+	console.log(savedId);
+	console.log(savedDetails);
+	
+	$(".gameTitle").text(savedDetails.name);
+	$(".description").text(savedDetails.desc);
+	$(".publish").text(savedDetails.dev_details.developer_name);
+	$("#windowsRec").text(savedDetails.sys_req.window.recomm);
+	$("#windowsMin").text(savedDetails.sys_req.window.min);
+
+	function getTopReview(){
+		const reviews = {
+			async: true,
+			crossDomain: true,
+			url: `https://games-details.p.rapidapi.com/${savedId}/reviews/toprated/15`,
+			method: 'GET',
+			headers: {
+				'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
+				'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
+			}
+		};
+		
+		$.ajax(reviews).done(function (response) {
+			console.log(response);
+		});
+	}
+	getTopReview()
+	$('#topReview').text(response[0].date);
+}
+populateDetails();
+
+
