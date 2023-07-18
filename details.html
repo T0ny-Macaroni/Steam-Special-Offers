@@ -61,6 +61,7 @@
             <p class="bd-notification is-info">System requirements (Linux)</p>
           </div>
         </div>
+          <div class="column"><a href="search.html"><button class="button is-fullwidth is-info js-modal-trigger" id="backBtn" data-target="modal-js-example">To Main Page</button></a></div>
       </div>
       </div>
       <!-- Second column -->
@@ -68,7 +69,10 @@
         <div class="card">
         <div class="columns">
           <div class="column">
-            <p>YoutubeVideos</p>
+            <div id="showVideo">
+              <p>YoutubeVideos</p>
+              <iframe src="https://www.youtube.com/embed/9ewiJJe_nYI" frameborder="0" id="tubeVideo" width="520px" height="315px"></iframe>
+            </div>
           </div>
         </div>
 
@@ -77,7 +81,7 @@
             <p>Search results</p>
           </div>
         </div>
-
+        <!-- Reviews -->
         <div class="columns">
           <div class="column is-half">
             <p class="bd-notification is-danger">Top rated review</p>
@@ -91,7 +95,9 @@
     </div>
   </section>
   </div>
+  
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="assets/js/script.js"></script>
+
 </body>
 </html>

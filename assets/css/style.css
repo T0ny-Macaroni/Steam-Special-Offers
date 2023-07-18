@@ -53,7 +53,15 @@ body {
   background-color: #66c0f4;
 }
 
-#lightMode #searchBtn:hover {
+#lightMode #backBtn {
+  background-color: #66c0f4;
+}
+
+#lightMode #searchBtn:hover{
+  background-color: #3ea3dd;
+}
+
+#lightMode #backBtn:hover{
   background-color: #3ea3dd;
 }
 
