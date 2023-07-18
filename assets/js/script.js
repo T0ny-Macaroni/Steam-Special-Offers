@@ -2,15 +2,17 @@
 var userInput;
 var gameDetails;
 var data;
+var gameId;
 
 $('#searchBtn').on('click', function () {
 	// Capture the user input when the search button is clicked
 	userInput = $('#searchInput').val();
 
 	if (userInput) {
+	
 		var lnk = $('#lnk');
-		//lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
-		console.log(userInput);
+		lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
+
 
 		//Calling API function
 		performSearch(userInput);
@@ -23,7 +25,7 @@ function performSearch(userInput) {
 	const singleSearch = {
 		async: true,
 		crossDomain: true,
-		//url: 'https://games-details.p.rapidapi.com/search/' + userInput,
+		url: 'https://games-details.p.rapidapi.com/search/' + userInput,
 		method: 'GET',
 		headers: {
 			'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
@@ -33,18 +35,22 @@ function performSearch(userInput) {
 
 	$.ajax(singleSearch).done(function (response) {
 		console.log(response);
-		var gameId = response[0].id;
-		console.log(gameId);
 		performIdSearch(gameId);
-    // $('#game1').text(response[0].name);
-    // $('#game2').text(response[1].name);
-    // $('#game3').text(response[2].name);
-    for (let i = 0; i < response.length; i++) {
-      const gameName = response[i].name;
-      $('#game1').text(gameName);
-      $('#game2').text(gameName);
-      $('#game3').text(gameName);
-  }
+		$('#game1ID').append(response[0].id);
+		console.log(response[0].id);
+		console.log(response[1].id);
+		$('#game2ID').append(response[1].id);
+		$('#game3ID').append(response[2].id);
+		$('#game1').text(response[0].name);
+		$('#game2').text(response[1].name);
+		$('#game3').text(response[2].name);
+		// for (let i = 0; i < response.length; i++) {
+		// 	const gameName = response[i].name;
+		// 	console.log(gameName);
+		// 	$('#game1').text(gameName);
+		// 	$('#game2').text(gameName);
+		// 	$('#game3').text(gameName);
+		// }
 	});
 };
 
@@ -93,11 +99,11 @@ function displayMeme(url) {
 	const memeContainer = $('#memeContainer');
 	memeContainer.empty();
 	const memeImg = $('<img>').attr('src', url);
-  memeImg.on('error', function () {
-    memeImg.attr('src', 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjBmNGpiNGgyMnhlcmowa3BpaWFtaTk4ajN5YW1vdDlhcmx1dnRzYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/14uQ3cOFteDaU/giphy.gif')
-    var messageP = $('<p>Sorry, this image is not avaiable:(</p>');
-    memeContainer.append(messageP);
-  })
+	memeImg.on('error', function () {
+		memeImg.attr('src', 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjBmNGpiNGgyMnhlcmowa3BpaWFtaTk4ajN5YW1vdDlhcmx1dnRzYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/14uQ3cOFteDaU/giphy.gif')
+		var messageP = $('<p>Sorry, this image is not avaiable:(</p>');
+		memeContainer.append(messageP);
+	})
 	memeContainer.append(memeImg);
 }
 $('#memeBtn').on('click', generateMeme);
@@ -158,20 +164,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Dark/ligh theme toggle switch
+// Dark/light theme toggle switch
 // Access toggle switch HTML element
 var themeSwitcher = document.querySelector("#theme-switcher");
 var dark = document.getElementById("darkMode");
 
 var mode = "dark";
 
-themeSwitcher.addEventListener("click", function() {
-  if (mode === "dark") {
-    mode = "light";
-    dark.setAttribute("id", "lightMode");
-  }
-  else {
-    mode = "dark";
-    dark.setAttribute("id", "darkMode");
-  }
+themeSwitcher.addEventListener("click", function () {
+	if (mode === "dark") {
+		mode = "light";
+		dark.setAttribute("id", "lightMode");
+	}
+	else {
+		mode = "dark";
+		dark.setAttribute("id", "darkMode");
+	}
 });
