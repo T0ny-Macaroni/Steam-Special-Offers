@@ -9,6 +9,10 @@ body {
   letter-spacing: 2px;
 }
 
+#memeContainer img {
+  width: 300px;
+}
+
 /* Dark Theme */
 #darkMode {
   background-color: #171a21;
