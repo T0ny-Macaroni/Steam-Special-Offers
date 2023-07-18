@@ -38,48 +38,32 @@ function performSearch(userInput) {
 
 	$.ajax(singleSearch).done(function (response) {
 		console.log(response);
-		// performIdSearch(gameId);
-		var idVal = $('#game1').data('myval'); //getter
-		console.log(idVal);
-		// $('#game1').data('myval', response[0].id); //setter
 		$('#game1').data('myval', response[0].id).attr('data-myval', response[0].id);
 		$('#game2').data('myval', response[1].id).attr('data-myval', response[1].id);
 		$('#game3').data('myval', response[2].id).attr('data-myval', response[2].id);
 
-		// $('#game1').append(response[0].id);
 		console.log(response[0].id);
 		console.log(response[1].id);
-		// $('#game2').append(response[1].id);
-		// $('#game3').append(response[2].id);
 		$('#game1').text(response[0].name);
 		$('#game2').text(response[1].name);
 		$('#game3').text(response[2].name);
-		// var html = $('a')
-		// html.attr('href', details.html);
+		$('a').attr('href', 'details.html');
 	});
 };
 
 $('#game1').on ('click', function() {
-	// performIdSearch();
 	var gameID = $('#game1').data('myval'); //getter
 	console.log(gameID);
 	performIdSearch(gameID);
-	// console.log('Game Details', performIdSearch(gameID));
 });
 
 $('#game2').on ('click', function() {
-	// window.location.href = "details.html";
-	// performIdSearch(response[1].id);
-	// console.log('Game Details', performIdSearch);
 	var gameID = $('#game2').data('myval'); //getter
 	console.log(gameID);
 	performIdSearch(gameID);
 });
 
 $('#game3').on ('click', function() {
-	// window.location.href = "details.html";
-	// performIdSearch(response[2].id);
-	// console.log('Game Details', performIdSearch);
 	var gameID = $('#game3').data('myval'); //getter
 	console.log(gameID);
 	performIdSearch(gameID);
@@ -87,7 +71,6 @@ $('#game3').on ('click', function() {
 
 //Performs a single game search based on a game's ID (we previously got data from a game search + user Input)
 function performIdSearch(gameId) {
-	// console.log(gameId);
 	const idSearch = {
 		async: true,
 		crossDomain: true,
