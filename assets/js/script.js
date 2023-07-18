@@ -44,30 +44,16 @@ function performSearch(userInput) {
 
 		console.log(response[0].id);
 		console.log(response[1].id);
+		console.log(response[2].id);
+
 		$('#game1').text(response[0].name);
 		$('#game2').text(response[1].name);
 		$('#game3').text(response[2].name);
-		$('a').attr('href', 'details.html');
+
+		// $('a').attr('href', 'details.html');
 	});
 };
 
-$('#game1').on ('click', function() {
-	var gameID = $('#game1').data('myval'); //getter
-	console.log(gameID);
-	performIdSearch(gameID);
-});
-
-$('#game2').on ('click', function() {
-	var gameID = $('#game2').data('myval'); //getter
-	console.log(gameID);
-	performIdSearch(gameID);
-});
-
-$('#game3').on ('click', function() {
-	var gameID = $('#game3').data('myval'); //getter
-	console.log(gameID);
-	performIdSearch(gameID);
-});
 
 //Performs a single game search based on a game's ID (we previously got data from a game search + user Input)
 function performIdSearch(gameId) {
@@ -84,8 +70,61 @@ function performIdSearch(gameId) {
 
 	$.ajax(idSearch).done(function (response) {
 		console.log(response);
+		let string = JSON.stringify(response);
+		localStorage.setItem('Game ID', string);
 	});
 };
+
+$('#game1').on ('click', function() {
+	var gameIdVal = $('#game1').data('myval'); //getter
+	console.log(gameIdVal);
+	performIdSearch(gameIdVal);
+	let string = JSON.stringify(gameIdVal);
+	localStorage.setItem('Game ID', string);
+	$('a').attr('href', 'details.html').click(function(e){
+		e.preventDefault();
+		if (this.href) {
+			var target = this.href;
+			setTimeout(function(){
+				window.location = target;
+			}, 1000);
+		}
+	});
+});
+
+$('#game2').on ('click', function() {
+	var gameIdVal = $('#game2').data('myval'); //getter
+	console.log(gameIdVal);
+	performIdSearch(gameIdVal);
+	let string = JSON.stringify(gameIdVal);
+	localStorage.setItem('Game ID', string);
+	$('a').attr('href', 'details.html').click(function(e){
+		e.preventDefault();
+		if (this.href) {
+			var target = this.href;
+			setTimeout(function(){
+				window.location = target;
+			}, 1000);
+		}
+	});
+});
+
+$('#game3').on ('click', function() {
+	var gameIdVal = $('#game3').data('myval'); //getter
+	console.log(gameIdVal);
+	performIdSearch(gameIdVal);
+	let string = JSON.stringify(gameIdVal);
+	localStorage.setItem('Game ID', string);
+	$('a').attr('href', 'details.html').click(function(e){
+		e.preventDefault();
+		if (this.href) {
+			var target = this.href;
+			setTimeout(function(){
+				window.location = target;
+			}, 1000);
+		}
+	});
+});
 
 // Meme generator is DONE and working!
 //I put variables here for now
@@ -95,7 +134,7 @@ var memeImg = $('#memeImg');
 const memeGenerator = {
 	async: true,
 	crossDomain: true,
-	//url: 'https://meme-generator11.p.rapidapi.com/meme',
+	url: 'https://meme-generator11.p.rapidapi.com/meme',
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Key': '8eae8fe45emsh8cde312977721fcp1a1962jsn1c9b69406dde',
