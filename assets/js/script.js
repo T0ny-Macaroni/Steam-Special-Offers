@@ -112,7 +112,7 @@ var memeImg = $('#memeImg');
 const memeGenerator = {
 	async: true,
 	crossDomain: true,
-	// url: 'https://meme-generator11.p.rapidapi.com/meme',
+	//url: 'https://meme-generator11.p.rapidapi.com/meme',
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Key': '8eae8fe45emsh8cde312977721fcp1a1962jsn1c9b69406dde',
@@ -142,20 +142,30 @@ $('#memeBtn').on('click', generateMeme);
 
 ///////////////////////////////////////////////////////////////////////
 // Displays youtube videos on the search page
-const youtubeSearch = {
-	async: true,
-	crossDomain: true,
-	//url: 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=justin%2Bbieber',
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '13c0ab065bmsh9eeb9e8413c0474p1a1ef8jsnb069211559f5',
-		'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
-	}
-};
+function videoSearch() {
+  const youtubeSearch = {
+    async: true,
+    crossDomain: true,
+    // url: 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=' + userInput + ' trailer',
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '13c0ab065bmsh9eeb9e8413c0474p1a1ef8jsnb069211559f5',
+      'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
+    }
+  };
+  
+  $.ajax(youtubeSearch).done(function (response) {
+    console.log(response);
+  });
 
-$.ajax(youtubeSearch).done(function (response) {
-	console.log(response);
-});
+  // showVideo = document.getElementById('showVideo');
+  // tubeVideo = response.items[0].url;
+  // $('tubeVideo').attr('src', 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=' + userInput + ' trailer');
+  // showVideo.append(tubeVideo);
+  // console.log(tubeVideo);
+  //Example https://www.youtube.com/watch?v=p4Q3uh2RaZo - we need to change watch?v to embded to display on html -> https://www.youtube.com/embed=p4Q3uh2RaZo
+  //To change the link name we will probably have to use replaceWith method
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
