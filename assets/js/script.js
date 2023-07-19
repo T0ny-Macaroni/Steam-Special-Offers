@@ -12,7 +12,7 @@ $('#searchBtn').on('click', function () {
 	userInput = $('#searchInput').val();
 
 	if (userInput) {
-	
+
 		var lnk = $('#lnk');
 		lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
 
@@ -40,20 +40,21 @@ function performSearch(userInput) {
 	};
 
 	$.ajax(singleSearch).done(function (response) {
-		console.log(response);
 		$('#game1').data('myval', response[0].id).attr('data-myval', response[0].id);
 		$('#game2').data('myval', response[1].id).attr('data-myval', response[1].id);
 		$('#game3').data('myval', response[2].id).attr('data-myval', response[2].id);
 
-		console.log(response[0].id);
-		console.log(response[1].id);
-		console.log(response[2].id);
+		console.log(response[0].price);
+
+		localStorage.setItem('Game Price1', response[0].price)
+		// localStorage.setItem('Game Price2', response[1].price)
+		// localStorage.setItem('Game Price3', response[2].price)
 
 		$('#game1').text(response[0].name);
 		$('#game2').text(response[1].name);
 		$('#game3').text(response[2].name);
 
-		// $('a').attr('href', 'details.html');
+	
 	});
 };
 
@@ -72,57 +73,56 @@ function performIdSearch(gameId) {
 	};
 
 	$.ajax(idSearch).done(function (response) {
-		console.log(response);
 		let idDetails = JSON.stringify(response);
 		localStorage.setItem('Game Details', idDetails);
 	});
 };
 
-$('#game1').on ('click', function() {
+$('#game1').on('click', function () {
 	var gameIdVal = $('#game1').data('myval'); //getter
 	console.log(gameIdVal);
 	performIdSearch(gameIdVal);
 	let idDetails = JSON.stringify(gameIdVal);
 	localStorage.setItem('Game ID', idDetails);
-	$('a').attr('href', 'details.html').click(function(e){
+	$('a').attr('href', 'details.html').click(function (e) {
 		e.preventDefault();
 		if (this.href) {
 			var target = this.href;
-			setTimeout(function(){
+			setTimeout(function () {
 				window.location = target;
 			}, 1500);
 		}
 	});
 });
 
-$('#game2').on ('click', function() {
+$('#game2').on('click', function () {
 	var gameIdVal = $('#game2').data('myval'); //getter
 	console.log(gameIdVal);
 	performIdSearch(gameIdVal);
 	let idDetails = JSON.stringify(gameIdVal);
 	localStorage.setItem('Game ID', idDetails);
-	$('a').attr('href', 'details.html').click(function(e){
+	$('a').attr('href', 'details.html').click(function (e) {
 		e.preventDefault();
 		if (this.href) {
 			var target = this.href;
-			setTimeout(function(){
+			setTimeout(function () {
 				window.location = target;
 			}, 1500);
 		}
 	});
 });
 
-$('#game3').on ('click', function() {
+$('#game3').on('click', function () {
 	var gameIdVal = $('#game3').data('myval'); //getter
 	console.log(gameIdVal);
 	performIdSearch(gameIdVal);
 	let idDetails = JSON.stringify(gameIdVal);
 	localStorage.setItem('Game ID', idDetails);
-	$('a').attr('href', 'details.html').click(function(e){
+	$('a').attr('href', 'details.html').click(function (e) {
 		e.preventDefault();
 		if (this.href) {
 			var target = this.href;
-			setTimeout(function(){
+			setTimeout(function () {
 				window.location = target;
 			}, 1500);
 		}
@@ -147,7 +147,6 @@ const memeGenerator = {
 
 function generateMeme() {
 	$.ajax(memeGenerator).done(function (response) {
-		console.log(response);
 		displayMeme(response.url);
 	});
 }
@@ -168,28 +167,28 @@ $('#memeBtn').on('click', generateMeme);
 ///////////////////////////////////////////////////////////////////////
 // Displays youtube videos on the search page
 function videoSearch() {
-  const youtubeSearch = {
-    async: true,
-    crossDomain: true,
-    // url: 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=' + userInput + ' trailer',
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '13c0ab065bmsh9eeb9e8413c0474p1a1ef8jsnb069211559f5',
-      'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
-    }
-  };
-  
-  $.ajax(youtubeSearch).done(function (response) {
-    console.log(response);
-  });
+	const youtubeSearch = {
+		async: true,
+		crossDomain: true,
+		// url: 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=' + userInput + ' trailer',
+		method: 'GET',
+		headers: {
+			'X-RapidAPI-Key': '13c0ab065bmsh9eeb9e8413c0474p1a1ef8jsnb069211559f5',
+			'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
+		}
+	};
 
-  // showVideo = document.getElementById('showVideo');
-  // tubeVideo = response.items[0].url;
-  // $('tubeVideo').attr('src', 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=' + userInput + ' trailer');
-  // showVideo.append(tubeVideo);
-  // console.log(tubeVideo);
-  //Example https://www.youtube.com/watch?v=p4Q3uh2RaZo - we need to change watch?v to embded to display on html -> https://www.youtube.com/embed=p4Q3uh2RaZo
-  //To change the link name we will probably have to use replaceWith method
+	$.ajax(youtubeSearch).done(function (response) {
+
+	});
+
+	// showVideo = document.getElementById('showVideo');
+	// tubeVideo = response.items[0].url;
+	// $('tubeVideo').attr('src', 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=' + userInput + ' trailer');
+	// showVideo.append(tubeVideo);
+	// console.log(tubeVideo);
+	//Example https://www.youtube.com/watch?v=p4Q3uh2RaZo - we need to change watch?v to embded to display on html -> https://www.youtube.com/embed=p4Q3uh2RaZo
+	//To change the link name we will probably have to use replaceWith method
 }
 
 
@@ -199,8 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (!userInput) {
 			$('input:text').attr('placeholder', 'Input a Game');
 		} else {
-		$el.classList.add('is-active');
-	};
+			$el.classList.add('is-active');
+		};
 	}
 
 	function closeModal($el) {
@@ -220,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 		$trigger.addEventListener('click', () => {
-				openModal($target);
+			openModal($target);
 		});
 	});
 
@@ -253,39 +252,5 @@ themeSwitcher.addEventListener("click", function () {
 	}
 });
 
-
-
-function populateDetails(){
-	var savedDetails = JSON.parse(localStorage.getItem('Game Details'));
-	var savedId = JSON.parse(localStorage.getItem('Game ID'));
-	console.log(savedId);
-	console.log(savedDetails);
-	
-	$(".gameTitle").text(savedDetails.name);
-	$(".description").text(savedDetails.desc);
-	$(".publish").text(savedDetails.dev_details.developer_name);
-	$("#windowsRec").text(savedDetails.sys_req.window.recomm);
-	$("#windowsMin").text(savedDetails.sys_req.window.min);
-
-	function getTopReview(){
-		const reviews = {
-			async: true,
-			crossDomain: true,
-			url: `https://games-details.p.rapidapi.com/${savedId}/reviews/toprated/15`,
-			method: 'GET',
-			headers: {
-				'X-RapidAPI-Key': '430c836d45msh0050ea49f6b8455p1f8a07jsn725aabd514c9',
-				'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
-			}
-		};
-		
-		$.ajax(reviews).done(function (response) {
-			console.log(response);
-		});
-	}
-	getTopReview()
-	$('#topReview').text(response[0].date);
-}
-populateDetails();
 
 
