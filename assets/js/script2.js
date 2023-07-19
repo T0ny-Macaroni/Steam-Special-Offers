@@ -7,6 +7,7 @@ function populateDetails() {
 	$(".gameTitle").text(savedDetails.name);
 	$(".description").text(savedDetails.desc);
     $(".publish").text('Publisher: ' + savedDetails.dev_details.developer_name);
+    $("img").attr('src', savedDetails.images.screenshot[0]);
     
 	$("#windowsRec").text(savedDetails.sys_req.window.recomm);
 	$("#windowsMin").text(savedDetails.sys_req.window.min);
@@ -29,8 +30,8 @@ function populateDetails() {
         });
     }
 
-	getTopReview();
-    getFunnyReview();
+	// getTopReview();
+    // getFunnyReview();
 function getFunnyReview(){
 
     const reviews2 = {
@@ -53,21 +54,16 @@ function getFunnyReview(){
 populateDetails()
 
 
-// conversion function for rupees into USD
-// console.log(amountUSD);
-// localStorage.setItem('Game Price1USD', amountString );
-// amountInteger = parseInt(amountString);
-// console.log(amountInteger);
-// function convertINRtoUSD() {
-//     const amountString = localStorage.getItem('Game Price1')
-//     const amountCleared = amountString.replace( /₹\s*/, "")
-//     console.log(amountCleared);
-//     const amountInteger = Number(amountCleared);
-//     console.log(amountInteger);
-//     const exchangeRate = 0.014; // Exchange rate: 1 INR = 0.014 USD
-//     const convertedAmount = amountInteger * exchangeRate; 
-//     console.log("USD", convertedAmount);
-//     //  convertedAmount.toFixed(2); // Return the converted amount with 2 decimal places
-// }
+function convertINRtoUSD() {
+    const amountString = localStorage.getItem('Game Price1')
+    const amountCleared = amountString.replace( /₹\s*/, "")
+    console.log(typeof amountCleared);
+    const amountInteger = Number(amountCleared.replaceAll(',', ''));
+    console.log(amountInteger);
+    const exchangeRate = 0.012; // Exchange rate: 1 INR = 0.014 USD
+    const convertedAmount = amountInteger * exchangeRate; 
+    console.log("USD", convertedAmount);
+    
+}
 
-// convertINRtoUSD()
+convertINRtoUSD()
