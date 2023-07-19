@@ -199,8 +199,14 @@ input:checked + .slider:before {
   color: #359edb;
 }
 
+.price {
+  margin-top: 5px;
+  font-weight: bolder;
+}
+
 .publish {
   margin-top: 15px;
+  font-weight: bolder;
 }
 
 #titleText {
@@ -218,4 +224,13 @@ input:checked + .slider:before {
   padding: 20px;
   box-shadow:
     0.3em 0.3em 1em rgba(0, 0, 0, 0.2);
+}
+
+#messageText {
+  font-weight: bolder;
+}
+
+#topReview, #funnyReview {
+  padding: 12px;
+  margin: 0 25px;
 }

@@ -40,7 +40,7 @@
         <!-- Game info container -->
         <div class="card">
         <div class="columns">
-          <div class="column">
+          <div class="column p-5">
             <img src="" alt="">
             <p class="gameTitle">Name of the game</p>
           </div>
@@ -64,35 +64,31 @@
             <p id="windowsMin" class="bd-notification is-info textBox"></p>
           </div>
         </div>
-          <div class="column"><a href="search.html"><button class="button is-fullwidth is-info js-modal-trigger" id="backBtn" data-target="modal-js-example">To Main Page</button></a></div>
+          <div class="column"><a href="index.html"><button class="button is-fullwidth is-info js-modal-trigger" id="backBtn" data-target="modal-js-example">To Main Page</button></a></div>
       </div>
       </div>
       <!-- Second column -->
       <div class="column has-text-centered mt-5 p-5 mx-5">
         <div class="card">
         <div class="columns">
-          <div class="column">
+          <div class="column p-5">
             <div id="showVideo">
-              <p>YoutubeVideos</p>
               <!-- <iframe src="" frameborder="0" id="tubeVideo" width="520px" height="315px"></iframe> -->
               <video src="" id="gameVideo"></video>
-              <p>right click to show controls!</p>
+              <p id="messageText">Right click to show controls!</p>
             </div>
           </div>
         </div>
 
-        <div class="columns">
-          <div class="column">
-            <p>Search results</p>
-          </div>
-        </div>
         <!-- Reviews -->
         <div class="columns">
-          <div class="column is-half table-container">
-            <table class="table" id="topReview" class="bd-notification is-danger">Top rated review</table>
+          <div class="column is-half">
+            <p id="titleText" class="bd-notification is-info">Top rated review</p>
+            <p id="topReview" class="bd-notification is-danger textBox"></p>
           </div>
           <div class="column is-half">
-            <p id="funnyReview" class="bd-notification is-danger">Most rated review</p>
+            <p id="titleText" class="bd-notification is-info">Funny review</p>
+            <p id="funnyReview" class="bd-notification is-danger textBox"></p>
           </div>
         </div>
         </div>
