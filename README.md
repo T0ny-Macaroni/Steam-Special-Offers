@@ -1,3 +1,0 @@
-# Steam-Special-Offers
-
-Hello!
