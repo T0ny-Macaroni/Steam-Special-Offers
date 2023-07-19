@@ -40,6 +40,26 @@ function performSearch(userInput) {
 	};
 
 	$.ajax(singleSearch).done(function (response) {
+
+		if (response.name === undefined) {
+			$('#game1').text('No results');
+		} else {
+			$('#game1').text(response[0].name);
+		}
+
+		if (response.name === undefined) {
+			$('#game2').text('No results');
+		} else {
+			$('#game2').text(response[1].name);
+		}
+		
+		if (response.name === undefined) {
+			$('#game3').text('No results');
+		} else {
+			$('#game3').text(response[2].name);
+		}
+
+
 		$('#game1').data('myval', response[0].id).attr('data-myval', response[0].id);
 		$('#game2').data('myval', response[1].id).attr('data-myval', response[1].id);
 		$('#game3').data('myval', response[2].id).attr('data-myval', response[2].id);
@@ -50,9 +70,6 @@ function performSearch(userInput) {
 		// localStorage.setItem('Game Price2', response[1].price)
 		// localStorage.setItem('Game Price3', response[2].price)
 
-		$('#game1').text(response[0].name);
-		$('#game2').text(response[1].name);
-		$('#game3').text(response[2].name);
 
 	
 	});
@@ -226,6 +243,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	function closeModal($el) {
+		$('#game1').text('');
+		$('#game2').text('');
+		$('#game3').text('');
+
 		$el.classList.remove('is-active');
 	}
 
