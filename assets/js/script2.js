@@ -30,8 +30,8 @@ function populateDetails() {
         });
     }
 
-    // getTopReview();
-    // getFunnyReview();
+    getTopReview();
+    getFunnyReview();
     function getFunnyReview() {
         const reviews2 = {
             async: true,
