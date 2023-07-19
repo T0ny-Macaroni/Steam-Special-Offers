@@ -30,10 +30,11 @@ function populateDetails() {
         });
     }
 
-    // getTopReview();
-    // getFunnyReview();
-    function getFunnyReview() {
 
+    getTopReview();
+    getFunnyReview();
+  
+    function getFunnyReview() {
         const reviews2 = {
             async: true,
             crossDomain: true,
@@ -44,7 +45,6 @@ function populateDetails() {
                 'X-RapidAPI-Host': 'games-details.p.rapidapi.com'
             }
         };
-
         $.ajax(reviews2).done(function (response) {
             $('#funnyReview').text(response[0].content);
         });
@@ -62,5 +62,6 @@ function convertINRtoUSD() {
     const convertedAmount = amountInteger * exchangeRate;
     let formattedAmount = convertedAmount.toFixed(2)
     $('.price').text('$ ' + formattedAmount);
+
 
 }
