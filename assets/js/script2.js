@@ -30,8 +30,8 @@ function populateDetails() {
         });
     }
 
-    // getTopReview();
-    // getFunnyReview();
+    getTopReview();
+    getFunnyReview();
     function getFunnyReview() {
 
         const reviews2 = {
@@ -55,7 +55,7 @@ convertINRtoUSD()
 
 
 function convertINRtoUSD() {
-    const amountString = localStorage.getItem('Game Price1')
+    const amountString = localStorage.getItem('Game Price')
     const amountCleared = amountString.replace(/₹\s*/, "")
     const amountInteger = Number(amountCleared.replaceAll(',', ''));
     const exchangeRate = 0.012; // Exchange rate: 1 INR = 0.014 USD
