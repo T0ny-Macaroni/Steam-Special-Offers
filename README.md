@@ -49,6 +49,10 @@ APIs we used (from RapidApi):
 
 [Meme Generator](https://rapidapi.com/eximia-eximia-default/api/meme-generator-and-template-database)
 
+[Bulma](https://bulma.io/documentation/overview/start/)
+
+[ColorsWall](https://colorswall.com/palette/193)
+
 UT Coding Bootcamp (starter code for toggle switch)
 
 ---
