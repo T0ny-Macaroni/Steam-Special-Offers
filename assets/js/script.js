@@ -54,7 +54,7 @@ function performSearch(userInput) {
 			$('#game3').text(response[2].name);
 		populateStorage()
 		function populateStorage() {
-			localStorage.setItem('Game Price1', response[0].price)
+			localStorage.setItem('Game Price', response[0].price)
 			localStorage.setItem('Game Price', response[1].price)
 			localStorage.setItem('Game Price', response[2].price)
 			
