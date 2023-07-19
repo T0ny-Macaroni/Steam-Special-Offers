@@ -8,6 +8,7 @@ function populateDetails() {
 	$(".description").text(savedDetails.desc);
     $(".publish").text('Publisher: ' + savedDetails.dev_details.developer_name);
     $("img").attr('src', savedDetails.images.screenshot[0]);
+    $("#gameVideo").attr('src', savedDetails.images.videos[0]);
     
 	$("#windowsRec").text(savedDetails.sys_req.window.recomm);
 	$("#windowsMin").text(savedDetails.sys_req.window.min);
@@ -52,6 +53,7 @@ function getFunnyReview(){
     }
 }
 populateDetails()
+convertINRtoUSD()
 
 
 function convertINRtoUSD() {
@@ -62,8 +64,8 @@ function convertINRtoUSD() {
     console.log(amountInteger);
     const exchangeRate = 0.012; // Exchange rate: 1 INR = 0.014 USD
     const convertedAmount = amountInteger * exchangeRate; 
+    let formattedAmount = convertedAmount.toFixed(2)
     console.log("USD", convertedAmount);
+    $('.price').text('$ ' + formattedAmount);
     
 }
-
-convertINRtoUSD()
