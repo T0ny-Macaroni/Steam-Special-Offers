@@ -232,3 +232,4 @@ themeSwitcher.addEventListener("click", function () {
 		dark.setAttribute("id", "darkMode");
 	}
 });
+
