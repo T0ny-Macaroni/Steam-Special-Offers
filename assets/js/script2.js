@@ -31,8 +31,8 @@ function populateDetails() {
         });
     }
 
-	// getTopReview();
-    // getFunnyReview();
+	getTopReview();
+    getFunnyReview();
 function getFunnyReview(){
 
     const reviews2 = {
@@ -66,6 +66,6 @@ function convertINRtoUSD() {
     const convertedAmount = amountInteger * exchangeRate; 
     let formattedAmount = convertedAmount.toFixed(2)
     console.log("USD", convertedAmount);
-    $('.price').text('$ ' + formattedAmount);
+    $('.price').text('Price: $ ' + formattedAmount);
     
 }

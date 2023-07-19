@@ -295,11 +295,3 @@ themeSwitcher.addEventListener("click", function () {
 		dark.setAttribute("id", "darkMode");
 	}
 });
-
-
-// function showVideo() {
-//   var savedDetails = JSON.parse(localStorage.getItem('Game Details'));
-// 	console.log(savedDetails);
-
-//   $('#gameVideo').video(saveDetails.images.videos[0]);
-// }
