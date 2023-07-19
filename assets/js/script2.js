@@ -6,7 +6,7 @@ function populateDetails() {
 
 	$(".gameTitle").text(savedDetails.name);
 	$(".description").text(savedDetails.desc);
-	$(".publish").text(savedDetails.dev_details.developer_name);
+    $(".publish").text('Publisher: ' + savedDetails.dev_details.developer_name);
     
 	$("#windowsRec").text(savedDetails.sys_req.window.recomm);
 	$("#windowsMin").text(savedDetails.sys_req.window.min);

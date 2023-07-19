@@ -157,7 +157,7 @@ function displayMeme(url) {
 	const memeImg = $('<img>').attr('src', url);
 	memeImg.on('error', function () {
 		memeImg.attr('src', 'https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjBmNGpiNGgyMnhlcmowa3BpaWFtaTk4ajN5YW1vdDlhcmx1dnRzYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/14uQ3cOFteDaU/giphy.gif')
-		var messageP = $('<p>Sorry, this image is not avaiable:(</p>');
+		var messageP = $('<p>Sorry, this image is not available:(</p>');
 		memeContainer.append(messageP);
 	})
 	memeContainer.append(memeImg);
@@ -166,6 +166,21 @@ $('#memeBtn').on('click', generateMeme);
 
 ///////////////////////////////////////////////////////////////////////
 // Displays youtube videos on the search page
+// function videoSearch() {
+//   const youtubeSearch = {
+//     async: true,
+//     crossDomain: true,
+//     // url: 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=' + userInput + ' trailer',
+//     method: 'GET',
+//     headers: {
+//       'X-RapidAPI-Key': '13c0ab065bmsh9eeb9e8413c0474p1a1ef8jsnb069211559f5',
+//       'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
+//     }
+//   };
+
+//   $.ajax(youtubeSearch).done(function (response) {
+//     console.log(response);
+//   });
 function videoSearch() {
 	const youtubeSearch = {
 		async: true,
@@ -182,6 +197,14 @@ function videoSearch() {
 
 	});
 
+//   // showVideo = document.getElementById('showVideo');
+//   // tubeVideo = response.items[0].url;
+//   // $('tubeVideo').attr('src', 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=' + userInput + ' trailer');
+//   // showVideo.append(tubeVideo);
+//   // console.log(tubeVideo);
+//   //Example https://www.youtube.com/watch?v=p4Q3uh2RaZo - we need to change watch?v to embded to display on html -> https://www.youtube.com/embed=p4Q3uh2RaZo
+//   //To change the link name we will probably have to use replaceWith method
+// }
 	// showVideo = document.getElementById('showVideo');
 	// tubeVideo = response.items[0].url;
 	// $('tubeVideo').attr('src', 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=' + userInput + ' trailer');
@@ -253,4 +276,9 @@ themeSwitcher.addEventListener("click", function () {
 });
 
 
+// function showVideo() {
+//   var savedDetails = JSON.parse(localStorage.getItem('Game Details'));
+// 	console.log(savedDetails);
 
+//   $('#gameVideo').video(saveDetails.images.videos[0]);
+// }
