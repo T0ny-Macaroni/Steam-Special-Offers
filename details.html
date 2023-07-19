@@ -36,7 +36,7 @@
   <section>
     <div class="columns">
       <!-- First column -->
-      <div class="column has-text-centered mt-5 p-5">
+      <div class="column has-text-centered mt-5 p-5 mx-5">
         <!-- Game info container -->
         <div class="card">
         <div class="columns">
@@ -46,7 +46,7 @@
           </div>
         </div>
         <!-- Game descriptions and release date -->
-        <div class="columns">
+        <div class="columns ">
           <div class="column">
             <p class="description"></p>
             <p class="publish"></p>
@@ -55,24 +55,27 @@
         </div>
         <!-- System requirements -->
         <div class="columns">
-          <div class="column">
-            <p id='windowsRec' class="bd-notification is-info">System requirements (Windows)</p>
+          <div class="column is-half">
+            <p id="titleText">Recommended requirements</p>
+            <p id='windowsRec' class="bd-notification is-info textBox"></p>
           </div>
-          <div class="column">
-            <p id="windowsMin" class="bd-notification is-info"></p>
+          <div class="column is-half">
+            <p id="titleText">Minimum requirements</p>
+            <p id="windowsMin" class="bd-notification is-info textBox"></p>
           </div>
         </div>
           <div class="column"><a href="search.html"><button class="button is-fullwidth is-info js-modal-trigger" id="backBtn" data-target="modal-js-example">To Main Page</button></a></div>
       </div>
       </div>
       <!-- Second column -->
-      <div class="column has-text-centered mt-5 p-5">
+      <div class="column has-text-centered mt-5 p-5 mx-5">
         <div class="card">
         <div class="columns">
           <div class="column">
             <div id="showVideo">
               <p>YoutubeVideos</p>
-              <iframe src="https://www.youtube.com/embed/9ewiJJe_nYI" frameborder="0" id="tubeVideo" width="520px" height="315px"></iframe>
+              <!-- <iframe src="" frameborder="0" id="tubeVideo" width="520px" height="315px"></iframe> -->
+              <video src="" id="gameVideo"></video>
             </div>
           </div>
         </div>

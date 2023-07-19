@@ -139,6 +139,7 @@ input:checked + .slider:before {
   border-radius: 0;
 }
 
+/* Modal */
 .modal-head {
   border-bottom: 1px solid #171a21;
   border-top-left-radius: 6px;
@@ -168,6 +169,7 @@ input:checked + .slider:before {
   background-color: #2a475e;
 }
 
+/* Top 3 searches in Modals */
 #game1 {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -181,4 +183,39 @@ input:checked + .slider:before {
 #game3 {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+/* Game details container */
+.gameTitle {
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.description {
+  margin: 0 25px;
+  font-size: 18px;
+  line-height: 1.8em;
+  font-weight: bolder;
+  color: #359edb;
+}
+
+.publish {
+  margin-top: 15px;
+}
+
+#titleText {
+  font-size: 20px;
+  padding: 10px;
+  font-weight: bolder
+}
+
+#windowsRec, #windowsMin {
+  padding: 12px;
+  margin: 0 25px;
+}
+
+.textBox {
+  padding: 20px;
+  box-shadow:
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.2);
 }
