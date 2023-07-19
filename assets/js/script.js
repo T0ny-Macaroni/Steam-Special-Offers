@@ -16,15 +16,12 @@ $('#searchBtn').on('click', function () {
 		var lnk = $('#lnk');
 		lnk.href = 'https://games-details.p.rapidapi.com/search/' + userInput;
 
-
 		//Calling API function
 		performSearch(userInput);
 	} else {
 		console.log('Invalid input');
 	}
-	// var html = $('a')
-	// // html.attr('href', details.html);
-	// console.log(details.html);
+
 });
 
 function performSearch(userInput) {
@@ -40,40 +37,34 @@ function performSearch(userInput) {
 	};
 
 	$.ajax(singleSearch).done(function (response) {
-
-		if (response.name === undefined) {
-			$('#game1').text('No results');
-		} else {
+	
+		// if (response.name !== [' ']) {
+		// 	$('#game1').text('No results');
+		// } else {
 			$('#game1').text(response[0].name);
-		}
 
-		if (response.name === undefined) {
-			$('#game2').text('No results');
-		} else {
+		// if (response.name !== [' ']) {
+		// 	$('#game2').text('No results')
+		// } else {
 			$('#game2').text(response[1].name);
-		}
-		
-		if (response.name === undefined) {
-			$('#game3').text('No results');
-		} else {
+
+		// if (response.name !== [" "]) {
+			// $('#game3').text('No results');
+		// } else {
 			$('#game3').text(response[2].name);
-		}
-
-
+		populateStorage()
+		function populateStorage() {
+			localStorage.setItem('Game Price1', response[0].price)
+			localStorage.setItem('Game Price', response[1].price)
+			localStorage.setItem('Game Price', response[2].price)
+			
+		
 		$('#game1').data('myval', response[0].id).attr('data-myval', response[0].id);
 		$('#game2').data('myval', response[1].id).attr('data-myval', response[1].id);
 		$('#game3').data('myval', response[2].id).attr('data-myval', response[2].id);
-
-		console.log(response[0].price);
-
-		localStorage.setItem('Game Price1', response[0].price)
-		// localStorage.setItem('Game Price2', response[1].price)
-		// localStorage.setItem('Game Price3', response[2].price)
-
-
-	
-	});
-};
+		}
+	})
+}
 
 
 //Performs a single game search based on a game's ID (we previously got data from a game search + user Input)
@@ -97,7 +88,6 @@ function performIdSearch(gameId) {
 
 $('#game1').on('click', function () {
 	var gameIdVal = $('#game1').data('myval'); //getter
-	console.log(gameIdVal);
 	performIdSearch(gameIdVal);
 	let idDetails = JSON.stringify(gameIdVal);
 	localStorage.setItem('Game ID', idDetails);
@@ -113,8 +103,7 @@ $('#game1').on('click', function () {
 });
 
 $('#game2').on('click', function () {
-	var gameIdVal = $('#game2').data('myval'); //getter
-	console.log(gameIdVal);
+	var gameIdVal = $('#game2').data('myval'); //getter;
 	performIdSearch(gameIdVal);
 	let idDetails = JSON.stringify(gameIdVal);
 	localStorage.setItem('Game ID', idDetails);
@@ -131,7 +120,6 @@ $('#game2').on('click', function () {
 
 $('#game3').on('click', function () {
 	var gameIdVal = $('#game3').data('myval'); //getter
-	console.log(gameIdVal);
 	performIdSearch(gameIdVal);
 	let idDetails = JSON.stringify(gameIdVal);
 	localStorage.setItem('Game ID', idDetails);
@@ -146,8 +134,7 @@ $('#game3').on('click', function () {
 	});
 });
 
-// Meme generator is DONE and working!
-//I put variables here for now
+
 var memeBtn = $('#memeBtn');
 var memeImg = $('#memeImg');
 
@@ -180,56 +167,6 @@ function displayMeme(url) {
 	memeContainer.append(memeImg);
 }
 $('#memeBtn').on('click', generateMeme);
-
-///////////////////////////////////////////////////////////////////////
-// Displays youtube videos on the search page
-// function videoSearch() {
-//   const youtubeSearch = {
-//     async: true,
-//     crossDomain: true,
-//     // url: 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=' + userInput + ' trailer',
-//     method: 'GET',
-//     headers: {
-//       'X-RapidAPI-Key': '13c0ab065bmsh9eeb9e8413c0474p1a1ef8jsnb069211559f5',
-//       'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
-//     }
-//   };
-
-//   $.ajax(youtubeSearch).done(function (response) {
-//     console.log(response);
-//   });
-function videoSearch() {
-	const youtubeSearch = {
-		async: true,
-		crossDomain: true,
-		// url: 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=' + userInput + ' trailer',
-		method: 'GET',
-		headers: {
-			'X-RapidAPI-Key': '13c0ab065bmsh9eeb9e8413c0474p1a1ef8jsnb069211559f5',
-			'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
-		}
-	};
-
-	$.ajax(youtubeSearch).done(function (response) {
-
-	});
-
-//   // showVideo = document.getElementById('showVideo');
-//   // tubeVideo = response.items[0].url;
-//   // $('tubeVideo').attr('src', 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=' + userInput + ' trailer');
-//   // showVideo.append(tubeVideo);
-//   // console.log(tubeVideo);
-//   //Example https://www.youtube.com/watch?v=p4Q3uh2RaZo - we need to change watch?v to embded to display on html -> https://www.youtube.com/embed=p4Q3uh2RaZo
-//   //To change the link name we will probably have to use replaceWith method
-// }
-	// showVideo = document.getElementById('showVideo');
-	// tubeVideo = response.items[0].url;
-	// $('tubeVideo').attr('src', 'https://youtube-search-results.p.rapidapi.com/youtube-search/?q=' + userInput + ' trailer');
-	// showVideo.append(tubeVideo);
-	// console.log(tubeVideo);
-	//Example https://www.youtube.com/watch?v=p4Q3uh2RaZo - we need to change watch?v to embded to display on html -> https://www.youtube.com/embed=p4Q3uh2RaZo
-	//To change the link name we will probably have to use replaceWith method
-}
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -295,3 +232,4 @@ themeSwitcher.addEventListener("click", function () {
 		dark.setAttribute("id", "darkMode");
 	}
 });
+
